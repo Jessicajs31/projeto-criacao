@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beleza Suprema</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        header {
+            background-color: #ff7f7f;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+        nav {
+            position: relative;
+        }
+        .menu {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .menu a {
+            text-decoration: none;
+            color: #ff7f7f;
+            font-weight: bold;
+            border: 2px solid #ff7f7f;
+            border-radius: 5px;
+            padding: 10px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .menu a:hover {
+            background-color: #ff7f7f;
+            color: white;
+        }
+        .menu-toggle {
+            display: none;
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background-color: #ff7f7f;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .menu-hidden {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            margin: 10px 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 20px;
+        }
+        @media (max-width: 768px) {
+            .menu {
+                display: none;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .menu-hidden {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Beleza Suprema</h1>
+        <p>Realçando sua beleza com os melhores cuidados</p>
+    </header>
+
+    <nav>
+        <button class="menu-toggle">☰ Menu</button>
+        <div class="menu">
+            <a href="#servicos">Serviços</a>
+            <a href="#sobre">Sobre Nós</a>
+            <a href="#contato">Contato</a>
+        </div>
+        <div class="menu-hidden">
+            <a href="#servicos">Serviços</a>
+            <a href="#sobre">Sobre Nós</a>
+            <a href="#contato">Contato</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <section id="servicos">
+            <h2>Serviços</h2>
+            <div class="services">
+                <div class="card">
+                    <h3>Maquiagem</h3>
+                    <p>Transforme-se com nossos especialistas.</p>
+                </div>
+                <div class="card">
+                    <h3>Corte e Estilo</h3>
+                    <p>Novos looks incríveis para você.</p>
+                </div>
+                <div class="card">
+                    <h3>Cuidados com a Pele</h3>
+                    <p>Pele saudável e radiante.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="sobre">
+            <h2>Sobre Nós</h2>
+            <p>Somos apaixonados por realçar a beleza natural de cada cliente. Nossa equipe é composta por especialistas dedicados a proporcionar a melhor experiência em cuidados de beleza.</p>
+        </section>
+
+        <section id="contato">
+            <h2>Contato</h2>
+            <form id="contactForm">
+                <label for="name">Nome:</label>
+                <input type="text" id="name" name="name" required><br><br>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required><br><br>
+
+                <label for="message">Mensagem:</label><br>
+                <textarea id="message" name="message" rows="4" required></textarea><br><br>
+
+                <button type="submit">Enviar</button>
+            </form>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Beleza Suprema. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const menu = document.querySelector('.menu');
+        const menuHidden = document.querySelector('.menu-hidden');
+
+        menuToggle.addEventListener('click', () => {
+            menuHidden.classList.toggle('menu-hidden');
+        });
+
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            alert(`Obrigado, ${name}! Recebemos sua mensagem e entraremos em contato em breve.`);
+
+            // Resetar formulário
+            document.getElementById('contactForm').reset();
+        });
+    </script>
+</body>
+</html>
